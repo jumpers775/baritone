@@ -17,7 +17,7 @@
 
 import baritone.gradle.task.CreateDistTask
 import baritone.gradle.task.ProguardTask
-//import baritone.gradle.task.TweakerJsonAssembler
+import baritone.gradle.task.TweakerJsonAssembler
 
 plugins {
     id "com.github.johnrengelman.shadow" version "7.0.0"
@@ -94,7 +94,12 @@ task proguard(type: ProguardTask) {
 
 task createDist(type: CreateDistTask, dependsOn: proguard)
 
+task createTweakerJson(type: TweakerJsonAssembler) {
+    outFile file("$rootDir/dist/baritone-${project.minecraft_version}.json")
+}
+
 build.finalizedBy(createDist)
+build.finalizedBy(createTweakerJson)
 
 publishing {
     publications {
