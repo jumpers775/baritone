@@ -237,7 +237,6 @@ public final class PathRenderer implements IRenderer {
             GoalXZ goalPos = (GoalXZ) goal;
 
             if (settings.renderGoalXZBeacon.value) {
-                glPushAttrib(GL_LIGHTING_BIT);
 
                 Helper.mc.getTextureManager().bindTexture(TileEntityBeaconRenderer.TEXTURE_BEACON_BEAM);
 
@@ -261,7 +260,6 @@ public final class PathRenderer implements IRenderer {
                     GlStateManager.enableDepth();
                 }
 
-                glPopAttrib();
                 return;
             }
 
